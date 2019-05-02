@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, FormBuilder, FormGroup} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -24,17 +24,20 @@ fetch(this.manufacUrl)
     return response.json();
   })
   .then((myJson) => {
-    let key = 'Mfr_Name';
+    let key = 'Mfr_CommonName';
     let i = 0;
    // console.log(myJson.Results[3].Mfr_Name);
     for (key in myJson.Results) {
       if (myJson.Results.hasOwnProperty(key)) {
           //console.log(myJson.Results[i].Mfr_Name);
-          let mfr_name = myJson.Results[i].Mfr_Name;
-          this.options.push(mfr_name);
+          let mfrName = myJson.Results[i].Mfr_CommonName;
+          if (!this.options.includes(mfrName) && mfrName !== null) {
+               this.options.push(mfrName);
+          }
           i++;
        }
     }
+    this.options.sort();
   });
 }
 ngOnInit() {
