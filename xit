@@ -1,0 +1,112 @@
+warning: LF will be replaced by CRLF in src/app/app.component.html.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/app/app.module.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/app/form/form.component.html.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/app/form/form.component.ts.
+The file will have its original line endings in your working directory
+[1mdiff --git a/src/app/app.component.html b/src/app/app.component.html[m
+[1mindex 7d2b460..8a5c2ba 100644[m
+[1m--- a/src/app/app.component.html[m
+[1m+++ b/src/app/app.component.html[m
+[36m@@ -5,17 +5,5 @@[m
+     </h1>[m
+ [m
+ </div>[m
+[31m-<h2>Here are some links to help you start: </h2>[m
+[31m-<ul>[m
+[31m-    <li>[m
+[31m-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>[m
+[31m-    </li>[m
+[31m-    <li>[m
+[31m-        <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>[m
+[31m-    </li>[m
+[31m-    <li>[m
+[31m-        <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>[m
+[31m-    </li>[m
+[31m-</ul>[m
+[31m-[m
+[32m+[m[32m<h2>Please fill in the form: </h2>[m
+ <app-form></app-form>[m
+\ No newline at end of file[m
+[1mdiff --git a/src/app/app.module.ts b/src/app/app.module.ts[m
+[1mindex b4f5859..05c39e5 100644[m
+[1m--- a/src/app/app.module.ts[m
+[1m+++ b/src/app/app.module.ts[m
+[36m@@ -6,8 +6,9 @@[m [mimport { FormComponent } from './form/form.component';[m
+ import { HttpClientModule } from '@angular/common/http';[m
+ import { MatFormFieldModule } from '@angular/material/form-field';[m
+ import { FormsModule, ReactiveFormsModule } from '@angular/forms';[m
+[31m-import {MatAutocompleteModule, MatInputModule} from '@angular/material';[m
+[32m+[m[32mimport { MatAutocompleteModule, MatInputModule } from '@angular/material';[m
+ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';[m
+[32m+[m[32mimport { GetJsonService } from './get-json.service';[m
+ [m
+ @NgModule({[m
+   declarations: [[m
+[36m@@ -24,7 +25,7 @@[m [mimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';[m
+     ReactiveFormsModule,[m
+     BrowserAnimationsModule[m
+   ],[m
+[31m-  providers: [],[m
+[32m+[m[32m  providers: [GetJsonService],[m
+   bootstrap: [AppComponent][m
+ })[m
+ export class AppModule { }[m
+[1mdiff --git a/src/app/form/form.component.html b/src/app/form/form.component.html[m
+[1mindex 671fc54..2f4a855 100644[m
+[1m--- a/src/app/form/form.component.html[m
+[1m+++ b/src/app/form/form.component.html[m
+[36m@@ -1,17 +1,26 @@[m
+[31m-<p>Noy</p>[m
+[31m-<div class="myform">[m
+[31m-    <mat-form-field>[m
+[31m-        <input matInput type="text" placeholder="Input" [formControl]="myControl">[m
+[31m-    </mat-form-field>[m
+[31m-</div>[m
+[32m+[m[32m<p>Noy test</p>[m
+ [m
+ <form class="example-form">[m
+     <mat-form-field class="example-full-width">[m
+[31m-        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">[m
+[32m+[m[32m        <input type="text" placeholder="Pick Manufacturer" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">[m
+         <mat-autocomplete #auto="matAutocomplete">[m
+             <mat-option *ngFor="let option of options" [value]="option">[m
+                 {{option}}[m
+             </mat-option>[m
+         </mat-autocomplete>[m
+     </mat-form-field>[m
+[31m-</form>[m
+\ No newline at end of file[m
+[32m+[m[32m</form>[m
+[32m+[m
+[32m+[m[32m<form class="example-form">[m
+[32m+[m[32m    <mat-form-field class="example-full-width">[m
+[32m+[m[32m        <input type="text" placeholder="Pick Make" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">[m
+[32m+[m[32m        <mat-autocomplete #auto="matAutocomplete">[m
+[32m+[m[32m            <mat-option *ngFor="let option of options2" [value]="option">[m
+[32m+[m[32m                {{option}}[m
+[32m+[m[32m            </mat-option>[m
+[32m+[m[32m        </mat-autocomplete>[m
+[32m+[m[32m    </mat-form-field>[m
+[32m+[m[32m</form>[m
+[32m+[m
+[32m+[m
+[32m+[m[32m<p>bla bla</p>[m
+\ No newline at end of file[m
+[1mdiff --git a/src/app/form/form.component.ts b/src/app/form/form.component.ts[m
+[1mindex ad88884..88d40e7 100644[m
+[1m--- a/src/app/form/form.component.ts[m
+[1m+++ b/src/app/form/form.component.ts[m
+[36m@@ -13,9 +13,8 @@[m [mimport { HttpClient } from '@angular/common/http';[m
+ export class FormComponent implements OnInit {[m
+   manufacUrl = 'https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json';[m
+   myControl = new FormControl();[m
+[31m-  //options: string[] = ['One', 'Two', 'Three'];[m
+   options: string[] = [];[m
+[31m-[m
+[32m+[m[32m  options2: string[] = ['noy', 'levi', 'test'];[m
+ [m
+ getallmanufacturers() {[m
+ fetch(this.manufacUrl)[m

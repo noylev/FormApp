@@ -13,9 +13,8 @@ import { HttpClient } from '@angular/common/http';
 export class FormComponent implements OnInit {
   manufacUrl = 'https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json';
   myControl = new FormControl();
-  //options: string[] = ['One', 'Two', 'Three'];
   options: string[] = [];
-
+  options2: string[] = ['noy', 'levi', 'test'];
 
 getallmanufacturers() {
 fetch(this.manufacUrl)
