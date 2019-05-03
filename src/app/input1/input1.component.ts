@@ -1,19 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, FormBuilder, FormGroup} from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
 import { GetJsonService } from '../get-json.service';
-//import { GetJsonService } from './app/get-json.service';
-
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  selector: 'app-input1',
+  templateUrl: './input1.component.html',
+  styleUrls: ['./input1.component.css']
 })
-export class FormComponent implements OnInit {
+export class Input1Component implements OnInit {
   manufacUrl = 'https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json';
   key = 'Mfr_CommonName';
   myControl = new FormControl();

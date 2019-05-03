@@ -16,8 +16,6 @@ export class GetJsonService {
     })
     .then((myJson) => {
       let i = 0;
-      //let dataVar = myJson.Results[i][key];
-      //console.log(dataVar);
       for (i = 0; i < myJson.Results.length; i++) {
             let dataVar = myJson.Results[i][key];
             console.log(dataVar);
