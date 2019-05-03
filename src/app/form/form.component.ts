@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { GetJsonService } from '../get-json.service';
+//import { GetJsonService } from './app/get-json.service';
+
 
 @Component({
   selector: 'app-form',
@@ -12,10 +15,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FormComponent implements OnInit {
   manufacUrl = 'https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json';
+  key = 'Mfr_CommonName';
   myControl = new FormControl();
   options: string[] = [];
-  options2: string[] = ['noy', 'levi', 'test'];
 
+  constructor(private getJsonService: GetJsonService) {
+    this.options = getJsonService.getJson(this.manufacUrl, this.key);
+  }
+/*
 getallmanufacturers() {
 fetch(this.manufacUrl)
   .then((response) => {
@@ -28,7 +35,6 @@ fetch(this.manufacUrl)
    // console.log(myJson.Results[3].Mfr_Name);
     for (key in myJson.Results) {
       if (myJson.Results.hasOwnProperty(key)) {
-          //console.log(myJson.Results[i].Mfr_Name);
           let mfrName = myJson.Results[i].Mfr_CommonName;
           if (!this.options.includes(mfrName) && mfrName !== null) {
                this.options.push(mfrName);
@@ -38,9 +44,7 @@ fetch(this.manufacUrl)
     }
     this.options.sort();
   });
-}
-ngOnInit() {
-    this.getallmanufacturers();
-  }
+}*/
+ngOnInit() {}
 
 }
