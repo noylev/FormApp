@@ -1,10 +1,29 @@
 <form class="example-form">
     <mat-form-field class="example-full-width">
-        <input type="text" placeholder="Pick Manufacturer" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let option of options" [value]="option">
-                {{option}}
+        <input type="text" placeholder="Selct User" aria-label="Number" matInput [formControl]="manufactControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getMakes($event.option.value)'>
+            <mat-option *ngFor="let manufact of manufacterers" [value]="manufact">
+                {{ manufact }}
             </mat-option>
         </mat-autocomplete>
     </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Pick Make" aria-label="Number" matInput [formControl]="makesControl" [matAutocomplete]="auto2">
+        <mat-autocomplete #auto2="matAutocomplete" (optionSelected)='getModels($event.option.value)'>
+            <mat-option *ngFor="let make of makes" [value]="make">
+                {{ make }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Pick Model" aria-label="Number" matInput [formControl]="modelsControl" [matAutocomplete]="auto3">
+        <mat-autocomplete #auto3="matAutocomplete">
+            <mat-option *ngFor="let model of models" [value]="model">
+                {{ model }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
 </form>

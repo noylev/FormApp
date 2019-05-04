@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+//import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class GetJsonService {
       let i = 0;
       for (i = 0; i < myJson.Results.length; i++) {
             let dataVar = myJson.Results[i][key];
-            console.log(dataVar);
+            //console.log(dataVar);
             if (!options.includes(dataVar) && dataVar !== null) {
                  options.push(dataVar);
             }

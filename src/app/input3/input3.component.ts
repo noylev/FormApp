@@ -8,6 +8,7 @@ import { GetJsonService } from '../get-json.service';
   styleUrls: ['./input3.component.css']
 })
 export class Input3Component implements OnInit {
+  //message: string;
   manufacUrl = 'https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/bmw?format=json';
   key = 'Model_Name';
   myControl = new FormControl();

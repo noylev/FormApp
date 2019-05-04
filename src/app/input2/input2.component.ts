@@ -7,7 +7,8 @@ import { GetJsonService } from '../get-json.service';
   templateUrl: './input2.component.html',
   styleUrls: ['./input2.component.css']
 })
-export class Input2Component {
+export class Input2Component implements OnInit {
+ //message = 'this is input 2 url';
   manufacUrl = 'https://vpic.nhtsa.dot.gov/api/vehicles/GetMakeForManufacturer/honda?format=json';
   key = 'Make_Name';
   myControl = new FormControl();
@@ -16,4 +17,8 @@ export class Input2Component {
   constructor(private getJsonService: GetJsonService) {
     this.options = getJsonService.getJson(this.manufacUrl, this.key);
   }
+
+  ngOnInit() {
+  }
+
 }

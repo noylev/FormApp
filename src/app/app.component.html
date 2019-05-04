@@ -1,13 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-    <h1>
-        Welcome to {{ title }}!
-    </h1>
 
-</div>
-<h2>Please fill in the form: </h2>
-<app-input1></app-input1>
-<app-input2></app-input2>
-<app-input3></app-input3>
+<body ng-app="myApp">
+    <div ng-controller="myCtrl">
+        <div style="text-align:center">
+            <h1>
+                Welcome to {{ title }}!
+            </h1>
 
-<button>Submit! </button>
+        </div>
+        <h2>Please fill in the form: </h2>
+        <app-input1></app-input1>
+        <app-input2></app-input2>
+        <app-input3></app-input3>
+
+        <button>Submit! </button>
+    </div>
+</body>
