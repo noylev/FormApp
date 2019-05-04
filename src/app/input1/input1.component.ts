@@ -9,7 +9,7 @@ import { GetJsonService } from '../get-json.service';
 })
 
 
-export class Input1Component implements OnInit{
+export class Input1Component implements OnInit {
   manufacUrl = 'https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json';
   makeUrl = 'https://vpic.nhtsa.dot.gov/api/vehicles/GetMakeForManufacturer/';
   modelUrl = 'https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/';
@@ -46,7 +46,14 @@ export class Input1Component implements OnInit{
     this.models = this.getJsonService.getJson(modelUrl , this.modelKey);
   }
   validateData() {
-    alert('Thank you for submitting the data!');
+    if (this.manufactControl.value !== null 
+        && this.makesControl.value !== null
+        && this.modelsControl.value !== null){
+        alert('Thank you for submitting the data!');  
+    }
+    else{
+    alert('You have to fill in all the fields!');
+    }
   }
 
 }
