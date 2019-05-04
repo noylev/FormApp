@@ -1,15 +1,16 @@
+<h2>Please Selcet your Vehicle: </h2>
 <form class="example-form">
     <mat-form-field class="example-full-width">
-        <input type="text" placeholder="Selct User" aria-label="Number" matInput [formControl]="manufactControl" [matAutocomplete]="auto">
+        <input type="text" placeholder="Pick Manufacturer" aria-label="Number" matInput [formControl]="manufactControl" [matAutocomplete]="auto" required>
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getMakes($event.option.value)'>
-            <mat-option *ngFor="let manufact of manufacterers" [value]="manufact">
+            <mat-option *ngFor="let manufact of manufacturers" [value]="manufact">
                 {{ manufact }}
             </mat-option>
         </mat-autocomplete>
     </mat-form-field>
     <br>
     <mat-form-field class="example-full-width">
-        <input type="text" placeholder="Pick Make" aria-label="Number" matInput [formControl]="makesControl" [matAutocomplete]="auto2">
+        <input type="text" placeholder="Pick Make" aria-label="Number" matInput [formControl]="makesControl" [matAutocomplete]="auto2" required>
         <mat-autocomplete #auto2="matAutocomplete" (optionSelected)='getModels($event.option.value)'>
             <mat-option *ngFor="let make of makes" [value]="make">
                 {{ make }}
@@ -18,12 +19,13 @@
     </mat-form-field>
     <br>
     <mat-form-field class="example-full-width">
-        <input type="text" placeholder="Pick Model" aria-label="Number" matInput [formControl]="modelsControl" [matAutocomplete]="auto3">
+        <input type="text" placeholder="Pick Model" aria-label="Number" matInput [formControl]="modelsControl" [matAutocomplete]="auto3" required>
         <mat-autocomplete #auto3="matAutocomplete">
             <mat-option *ngFor="let model of models" [value]="model">
                 {{ model }}
             </mat-option>
         </mat-autocomplete>
     </mat-form-field>
-
+    <br>
+    <button (click)='validateData()'>Submit! </button>
 </form>

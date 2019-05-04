@@ -12,14 +12,13 @@ export class GetJsonService {
     let options: string [] = [];
     fetch(url)
     .then((response) => {
-      console.log('working in service yessssss');
+      console.log('json service is running...');
       return response.json();
     })
     .then((myJson) => {
       let i = 0;
       for (i = 0; i < myJson.Results.length; i++) {
             let dataVar = myJson.Results[i][key];
-            //console.log(dataVar);
             if (!options.includes(dataVar) && dataVar !== null) {
                  options.push(dataVar);
             }
